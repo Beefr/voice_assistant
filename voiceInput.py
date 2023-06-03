@@ -22,17 +22,17 @@ class VoiceInput(object):
             self._client.adjust_for_ambient_noise(source, duration=1)
         
     def translate(self):
-        try:
-            with self._micro as source:
-                #listens for the user's input
-                speech = self._client.listen(source)
-                    
-                # Using google to recognize audio
-                self._text=self._client.recognize_google(speech, language="fr-FR")
-        except sr.RequestError as e :
-            print("Voice input: "+str(e))
-            self._text="Désolé, je n'ai pas compris"
-        except sr.UnknownValueError as e :
-            print("Voice input: "+str(e))
-            self._text="Désolé, je n'ai pas compris"
+        #try:
+        with self._micro as source:
+            #listens for the user's input
+            speech = self._client.listen(source, phrase_time_limit = 10)
+                
+        # Using google to recognize audio
+        self._text=self._client.recognize_google(speech, language="fr-FR")
+        #except sr.RequestError as e :
+            #print("Voice input: "+str(e))
+            #self._text="Désolé, je n'ai pas compris"
+        #except sr.UnknownValueError as e :
+            #print("Voice input: "+str(e))
+            #self._text="Désolé, je n'ai pas compris"
        

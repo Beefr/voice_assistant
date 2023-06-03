@@ -13,29 +13,35 @@ class VoiceAssistant(object):
         self._vi=VoiceInput()
         self._speechInput=""
         self._chatgpt=ChatgptProcessing()
-        
-    def run(self):
         self._vi.get_noise_level()
-        while True:
-            print(self._up)
-            try:
-                self._vi.translate()
-                text=self._vi.text
-                if ("Sarah" in text):
-                    self._up=True
-                if ("tais-toi" in text):
-                    self._up=False
+        #self._start_time = time.time()
+        
+    def run(self):        
+        #print(self._up)
+        try:
+            self._vi.translate()
+            #self.chrono("voice input")
+            text=self._vi.text
+            if ("Sarah" in text):
+                self._up=True
+            if ("tais-toi" in text):
+                self._up=False
 
-                print(text+"\n")
+            #print(text+"\n")
 
-                if (self._up):
-                    self._chatgpt.answer(text)
-                    print(self._chatgpt.response)
-                    self._vo.translate(self._chatgpt.response.content)
-            except:
-                self._vo.translate("Désolé, je n'ai pas compris")
-        self.run()
-
+            if (self._up):
+                self._chatgpt.answer(text)
+                #self.chrono("chatgpt")
+                print(self._chatgpt.response)
+                self._vo.translate(self._chatgpt.response.content)
+                #self.chrono("voice output")
+        except:
+            pass
+            #self._vo.translate("Désolé, je n'ai pas compris")
+        
+    #def chrono(self, text):
+        #print("--- %s seconds for %s ---" % (time.time() - self._start_time, text))
+        #self._start_time = time.time()
 
 """     def is_done_speaking_event(self, doneSpeaking):
         self._vi.translate()
