@@ -31,7 +31,7 @@ class VoiceAssistant(object):
                 if (self._up):
                     self._chatgpt.answer(text)
                     print(self._chatgpt.response)
-                    self._vo.translate(self._chatgpt.response)
+                    self._vo.translate(self._chatgpt.response.content)
             except:
                 self._vo.translate("Désolé, je n'ai pas compris")
         self.run()
