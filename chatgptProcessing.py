@@ -15,6 +15,7 @@ class ChatgptProcessing(object):
             model='gpt-3.5-turbo',
             messages=self._messages
         )
+        self._messages.append(self._response.choices[0].message)
         
     def readApiKey(self):
         p = Path(__file__).with_name('key.txt')
