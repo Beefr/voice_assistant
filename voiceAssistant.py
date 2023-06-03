@@ -1,8 +1,8 @@
 from voiceInput import *
 from chatgptProcessing import *
 from voiceOutput import *
-import threading
-import time
+#import threading
+#import time
 
 class VoiceAssistant(object):
 
@@ -14,8 +14,28 @@ class VoiceAssistant(object):
         self._speechInput=""
         self._chatgpt=ChatgptProcessing()
         
+    def run(self):
+        self._vi.get_noise_level()
+        while True:
+            print(self._up)
+            try:
+                self._vi.translate()
+                text=self._vi.text
+                if ("Jarvis" in text):
+                    self._up=True
+                if ("tais-toi" in text):
+                    self._up=False
 
-    def is_done_speaking_event(self, doneSpeaking):
+                print(text+"\n")
+
+                if (self._up):
+                    self._vo.translate(self._chatgpt.answer(text))
+            except:
+                self._vo.translate("Désolé, je n'ai pas compris")
+        self.run()
+
+
+"""     def is_done_speaking_event(self, doneSpeaking):
         self._vi.translate()
         while not doneSpeaking.is_set():
             self._speechInput=self._vi.text
@@ -76,28 +96,8 @@ class VoiceAssistant(object):
                               target=self.is_done_answering_event,
                               args=(doneSpeaking, doneAnswering, ))
         t2.start()
+ """
 
-
-# __________________________________________________________________________
-
-    def run(self):
-        self._vi.get_noise_level()
-        while True:
-            print(self._up)
-            try:
-                self._vi.translate()
-                text=self._vi.text
-                if ("Jarvis" in text):
-                    self._up=True
-                if ("tais-toi" in text):
-                    self._up=False
-
-                print(text+"\n")
-
-                if (self._up):
-                    self._vo.translate(ChatgptProcessing.answer(text))
-            except:
-                self._vo.translate("Désolé, je n'ai pas compris")
 
 
 

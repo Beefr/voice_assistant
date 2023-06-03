@@ -33,6 +33,7 @@ class ChatgptProcessing(object):
         self._response=openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
             messages=self._messages
-        ).choices[0].message.content
-        self._messages.append(self._response.choices[0].message)
-        print(self._messages)
+        ).choices[0].message
+        #print(self._response.content)
+        self._messages.append(self._response)
+        #print(self._messages)
