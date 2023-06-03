@@ -1,0 +1,7 @@
+playsound
+gtts
+os
+speechrecognition
+pyaudio
+sys
+openai
