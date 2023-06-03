@@ -29,10 +29,4 @@ class VoiceInput(object):
                 
         # Using google to recognize audio
         self._text=self._client.recognize_google(speech, language="fr-FR")
-        #except sr.RequestError as e :
-            #print("Voice input: "+str(e))
-            #self._text="Désolé, je n'ai pas compris"
-        #except sr.UnknownValueError as e :
-            #print("Voice input: "+str(e))
-            #self._text="Désolé, je n'ai pas compris"
-       
+    
