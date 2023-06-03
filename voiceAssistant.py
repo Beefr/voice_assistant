@@ -21,6 +21,7 @@ class VoiceAssistant(object):
                 self._up=True
             if ("tais-toi" in text):
                 self._up=False
+                self._vo.translate("Ok n'hésitez pas à m'appeler au besoin Monsieur")
 
             if (self._up):
                 self._chatgpt.answer(text)
