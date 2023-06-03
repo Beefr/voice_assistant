@@ -21,7 +21,7 @@ class VoiceAssistant(object):
             try:
                 self._vi.translate()
                 text=self._vi.text
-                if ("Jarvis" in text):
+                if ("Sarah" in text):
                     self._up=True
                 if ("tais-toi" in text):
                     self._up=False
@@ -29,7 +29,9 @@ class VoiceAssistant(object):
                 print(text+"\n")
 
                 if (self._up):
-                    self._vo.translate(self._chatgpt.answer(text))
+                    self._chatgpt.answer(text)
+                    print(self._chatgpt.response)
+                    self._vo.translate(self._chatgpt.response)
             except:
                 self._vo.translate("Désolé, je n'ai pas compris")
         self.run()
