@@ -1,0 +1,15 @@
+playsound
+gtts
+os
+speechrecognition
+pyaudio
+openai
+opencv-python
+tensorflow
+keras
+imageAI 
+torch
+torchvision
+pillow
+pygame
+random

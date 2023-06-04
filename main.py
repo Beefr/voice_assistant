@@ -1,5 +1,4 @@
-from voiceAssistant import *
-
+from mainModule.voiceAssistant import *
 
 
 
