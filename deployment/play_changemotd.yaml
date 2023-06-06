@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  gather_facts: false
+  become: true
+  vars: 
+    nom_figlet: "{{ lookup('pipe', 'figlet {{ nom }}') }}"
+  tasks:
+    - name: mise à jour du motd
+      template:
+        src: /home/coren/template/motd.j2
+        dest: /etc/motd

@@ -1,0 +1,40 @@
+Vagrant.configure("2") do |config|
+    config.vm.box_download_insecure= true
+    config.vm.define "controlleransible", primary: true do |ansible|
+        ansible.vm.box = "debian/bullseye64"
+        ansible.vm.hostname="controlleransible"
+        ansible.vm.network "private_network", ip: "192.168.56.10"
+        ansible.vm.provision "file",
+            source: "./keys/rasp0_1"
+            destination: "/home/vagrant/keys/rasp0_1"
+        ansible.vm.provision "file",
+            source: "./keys/rasp4_1"
+            destination: "/home/vagrant/keys/rasp4_1"
+        ansible.vm.provision "file",
+            source: "./ansible.cfg"
+            destination: "/home/vagrant/ansible.cfg"
+        ansible.vm.provision "file",
+            source: "./inventaire"
+            destination: "/home/vagrant/inventaire"
+        ansible.vm.provision "file",
+            source: "./play_installpython.yaml"
+            destination: "/home/vagrant/play_installpython.yaml"
+        ansible.vm.provision "file",
+            source: "./play_changemotd.yaml"
+            destination: "/home/vagrant/play_changemotd.yaml"
+        ansible.vm.provision "file",
+            source: "./install.sh"
+            destination: "/home/vagrant/install.sh"
+        ansible.vm.provision "shell", inline: <<-SHELL
+            apt update -y
+            apt install dos2unix -y
+            dos2unix /home/vagrant/keys/rasp0_1
+            dos2unix /home/vagrant/keys/rasp4_1
+            apt install -y vim wget curl python3-pip
+            pip3 install ansible
+            apt install figlet -y
+        SHELL
+
+    end
+end
+        
