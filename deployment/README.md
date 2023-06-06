@@ -1,7 +1,9 @@
-vagrant up --provision
-vagrant ssh
-sudo su -
 
+installation.bat: vagrant up --provision
+connexion.bat: vagrant ssh
+
+
+sudo su -
 /home/vagrant/install.sh
 
 sudo vim /etc/hosts

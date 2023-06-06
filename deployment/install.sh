@@ -7,6 +7,7 @@ sudo usermod -aG sudo $windows_username
 sudo usermod -aG vagrant $windows_username
 sudo passwd $windows_username
 
+mkdir /home/coren/.ssh
 mv /home/vagrant/keys/* /home/$windows_username/.ssh
 chown $windows_username:$windows_username /home/$windows_username/.ssh/*
 chmod 600 /home/$windows_username/.ssh/*
