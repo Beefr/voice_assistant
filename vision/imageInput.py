@@ -6,11 +6,9 @@ class ImageInput(object):
 
     def __init__(self):
         self._client = ObjectDetection()  
-        path_model = "./vision/models/yolo-tiny.h5"  
-        self._path_input = "./vision/input/images.jpg"  
-        self._path_output = "./vision/output/newimage.jpg"
+        self._base_path = os.path.join(os.getcwd(), "vision")
         self._client.setModelTypeAsTinyYOLOv3()  
-        self._client.setModelPath(path_model) 
+        self._client.setModelPath(self._base_path+"\models\yolo-tiny.h5") 
         self._client.loadModel()  
         
         
@@ -20,13 +18,11 @@ class ImageInput(object):
         _, frame = vid.read()
         if not vid.isOpened():
             return ["rien"]
-        base_path = os.path.join(os.getcwd(), "vision\input\images")
-        print(base_path)
-        cv2.imwrite('{}.jpg'.format(base_path), frame)
+        cv2.imwrite('{}input.jpg'.format(self._base_path), frame)
 
         recognition = self._client.detectObjectsFromImage(  
-            input_image = self._path_input,  
-            output_image_path = self._path_output  
+            input_image = self._base_path+"\input\input.jpg",  
+            output_image_path = self._base_path+"\input\output.jpg"  
         )  
         # list of item in the scene
         result=[]

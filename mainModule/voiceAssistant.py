@@ -44,7 +44,7 @@ class VoiceAssistant(object):
                     self._vo.translate("Lecture de la prochaine musique")
                     self._mu.playNext()
                 elif ("previous" in text):
-                    self._vo.translate("Lecture de la musique précédent")
+                    self._vo.translate("Lecture de la musique précédente")
                     self._mu.previous()
                 elif ("pause" in text):
                     self._mu.pause()
@@ -52,16 +52,13 @@ class VoiceAssistant(object):
                 elif ("stop" in text):
                     self._mu.stop()
                     self._vo.translate("Arrêt de la musique")
-                elif ("relance" in text):
-                    self._vo.translate("Reprise de la lecture")
-                    self._mu.unpause()
                 elif ("joue" in text):
-                    self._vo.translate("Lecture de la musique")
+                    self._vo.translate("Reprise de la musique")
                     self._mu.play()
                 else:
-                    librairie="J'ai toutes ces musiques: "+str(self._mu.library)
-                    self._chatgpt.answer(librairie+text)
-                    self._vo.translate(self._chatgpt.response.content)
+                    #librairie="J'ai toutes ces musiques: "+str(self._mu.library)
+                    #self._vo.translate(librairie+text)
+                    self._vo.translate("Désolé je n'ai pas compris l'instruction pour le lecteur de musique.")
 
             elif (self._up):
                 self._chatgpt.answer(text)

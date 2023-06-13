@@ -13,3 +13,4 @@ torchvision
 pillow
 pygame
 random
+#google-cloud-vision
