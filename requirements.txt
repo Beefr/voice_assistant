@@ -1,7 +1,6 @@
 playsound
 gtts
-os
-speechrecognition
+SpeechRecognition
 pyaudio
 openai
 opencv-python
@@ -14,3 +13,4 @@ pillow
 pygame
 random
 #google-cloud-vision
+#os
