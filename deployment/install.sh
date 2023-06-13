@@ -34,3 +34,37 @@ echo "nom: machine rsp4diet64" >> /home/$windows_username/host_vars/rsp4diet64go
 mkdir /home/$windows_username/template
 echo "Bienvenue sur la machine" >> /home/$windows_username/template/motd.j2
 echo "{{ nom_figlet }}" >> /home/$windows_username/template/motd.j2
+
+
+
+
+
+
+
+
+pip install --upgrade pip setuptools wheel
+echo $PATH
+export PATH=$PATH:/home/coren/.local/bin
+sudo apt-get install libasound-dev portaudio19-dev libportaudio2 libportaudiocpp0 ffmpeg
+pip install SpeechRecognition
+pip install playsound
+pip install gtts
+pip install openai
+pip install opencv-python
+pip install tensorflow
+pip install keras
+pip install imageAI
+pip install torch
+pip install torchvision
+pip install pillow
+pip install pygame
+sudo apt install python3-tk
+sudo apt install python-dev
+sudo apt install python3-dev
+pip install PyAudio
+sudo adduser coren audio
+sudo dietpi-config (pour mettre USB DAC en audio + autoconversion + ...)
+sudo reboot
+cat /proc/asound/cards
+cat /proc/asound/modules
+lsmod | grep snd

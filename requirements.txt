@@ -11,6 +11,6 @@ torch
 torchvision
 pillow
 pygame
-random
+#random
 #google-cloud-vision
 #os
