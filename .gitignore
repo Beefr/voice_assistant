@@ -4,3 +4,5 @@ library
 rasp*
 .vagrant
 connect
+*.jpg
+*.wav
