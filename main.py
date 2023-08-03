@@ -3,7 +3,10 @@ from mainModule.voiceAssistant import *
 
 
 def main():
-    va= VoiceAssistant()
+    camera=True
+    soundInput=True
+    soundOutput=False
+    va= VoiceAssistant(camera, soundInput, soundOutput)
     while True:
         va.run()
 

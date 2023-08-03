@@ -68,3 +68,4 @@ sudo reboot
 cat /proc/asound/cards
 cat /proc/asound/modules
 lsmod | grep snd
+apt install openssh-server
