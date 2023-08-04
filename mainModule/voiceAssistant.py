@@ -54,6 +54,14 @@ class VoiceAssistant(object):
                 print("\n\n\n"+elem)
                 self.talk(self._chatgpt.response.content)
 
+            elif ("enregistre" in text and self._camera):
+                if ("début" in text):
+                    self.talk("Enregistrement en cours")
+                    self._ii.video.start()
+                if ("stop" in text):
+                    self._ii.video.stop()
+                    self.talk("Enregistrement arrêté")
+
             elif ("lecteur musique" in text and self._soundOutput):
                 if ("next" in text):
                     self.talk("Lecture de la prochaine musique")

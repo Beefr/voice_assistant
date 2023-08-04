@@ -1,6 +1,7 @@
 from imageai.Detection import ObjectDetection
 import cv2
 import os
+from videoInput import VideoInput
 
 class ImageInput(object):
 
@@ -10,6 +11,13 @@ class ImageInput(object):
         self._client.setModelTypeAsTinyYOLOv3()  
         self._client.setModelPath(self._base_path+"\models\yolo-tiny.h5") 
         self._client.loadModel()  
+        
+        self._video=VideoInput(self._base_path)
+        self._video.run()
+
+    @property 
+    def video(self):
+        return self._video
         
         
 
