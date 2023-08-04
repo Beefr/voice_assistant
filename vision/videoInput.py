@@ -30,6 +30,11 @@ class VideoInput(object):
         self._timer= threading.Timer(self._delay, self.run)
 
 
+    def currentFrame(self):
+        return self._queue[1]
+    
+    def isOpened(self):
+        return self._vid.isOpened()
 
     def run(self):
         if self._vid.isOpened():
@@ -69,7 +74,7 @@ class VideoInput(object):
     
 
     def stopEnregistrement(self):
-        filename='{}video_{}.avi'.format(self._basePath,datetime.now().strftime("%d-%m-%Y_%H-%M-%S"))
+        filename='{}videos\\video_{}.avi'.format(self._basePath,datetime.now().strftime("%d-%m-%Y_%H-%M-%S"))
         print(filename)
         result = cv2.VideoWriter(filename,  cv2.VideoWriter_fourcc(*'mp4v'), 10, self._size)
         for frame in self._queue:
