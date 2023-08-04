@@ -17,3 +17,5 @@ opencv-contrib-python
 #random
 #google-cloud-vision
 #os
+Flask
+Flask-WTF

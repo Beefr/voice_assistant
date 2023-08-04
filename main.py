@@ -7,8 +7,7 @@ def main():
     soundInput=True
     soundOutput=False # False for raspberry /!\
     va= VoiceAssistant(camera, soundInput, soundOutput)
-    while True:
-        va.run()
+    va.run()
 
 if __name__ == "__main__":
     main()

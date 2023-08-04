@@ -4,6 +4,9 @@ from mainModule.voiceOutput import *
 from vision.imageInput import ImageInput
 from musique.musique import Musique
 
+
+import threading
+
 class VoiceAssistant(object):
 
 
@@ -28,6 +31,7 @@ class VoiceAssistant(object):
       
         
         self.talk("Bonjour Monsieur")
+        self._timer= threading.Timer(10, self.run)
 
     def talk(self, msg):
         if self._soundOutput:
@@ -89,13 +93,21 @@ class VoiceAssistant(object):
                 self.talk(self._chatgpt.response.content)
         except Exception as error:
             print(error)
+        self._timer= threading.Timer(10, self.run) # 10sec comme le temps d'attente de la voix
+        self._timer.start()
 
 
 
 
+    def __del__(self):
+        self._timer.cancel()
 
 
-
+    def currentFrame(self):
+        if self._camera:
+            return self._ii.video.currentFrame()
+        else:
+            return None
 
 
 
