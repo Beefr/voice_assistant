@@ -3,7 +3,7 @@ gtts
 SpeechRecognition
 pyaudio
 openai
-opencv-python
+#opencv-python
 tensorflow
 keras
 imageAI 
@@ -11,6 +11,9 @@ torch
 torchvision
 pillow
 pygame
+thread6
+datetime
+opencv-contrib-python
 #random
 #google-cloud-vision
 #os

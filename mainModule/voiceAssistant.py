@@ -24,15 +24,16 @@ class VoiceAssistant(object):
         if soundOutput:
             self._chatgpt=ChatgptProcessing()
             self._vo=VoiceOutput()
-            self.talk("Bonjour Monsieur")
             self._mu=Musique()
       
+        
+        self.talk("Bonjour Monsieur")
 
     def talk(self, msg):
         if self._soundOutput:
             self._vo.translate(msg)
         else:
-            pass
+            print(msg)
         
     def run(self):        
         try:
@@ -54,11 +55,11 @@ class VoiceAssistant(object):
                 print("\n\n\n"+elem)
                 self.talk(self._chatgpt.response.content)
 
-            elif ("enregistre" in text and self._camera):
+            elif ("vidéo" in text and self._camera):
                 if ("début" in text):
                     self.talk("Enregistrement en cours")
                     self._ii.video.start()
-                if ("stop" in text):
+                elif ("arrêt" in text):
                     self._ii.video.stop()
                     self.talk("Enregistrement arrêté")
 
@@ -86,8 +87,8 @@ class VoiceAssistant(object):
             elif (self._up and self._soundOutput):
                 self._chatgpt.answer(text)
                 self.talk(self._chatgpt.response.content)
-        except:
-            pass
+        except Exception as error:
+            print(error)
 
 
 

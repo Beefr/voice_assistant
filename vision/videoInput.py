@@ -6,7 +6,7 @@ import threading
 from datetime import datetime
 
 
-def VideoInput(object):
+class VideoInput(object):
 
     def __init__(self, basePath):
         self._framerate=20 # images / seconde
@@ -20,6 +20,8 @@ def VideoInput(object):
         self._queue=[]
         self._vid = cv2.VideoCapture(0)
 
+        while not self._vid.isOpened():
+            pass # attente de l'ouverture de la caméra
         frame_width = int(self._vid.get(3))
         frame_height = int(self._vid.get(4))
         self._size = (frame_width, frame_height)
@@ -30,24 +32,25 @@ def VideoInput(object):
 
 
     def run(self):
-        if not self._vid.isOpened():
-            return None
-        _, frame = self._vid.read()
-        self._queue.append(frame)
+        if self._vid.isOpened():
+            _, frame = self._vid.read()
+            self._queue.append(frame)
 
-        if self._start:
-            pass # we keep saving frames for the video we want to save
-        elif len(self._queue)>=self._queueLength:
-            while len(self._queue)>=self._queueLength:
-                self._queue.pop(0)
-                # we release frames since we are done filming
-        
+            if self._start:
+                pass # we keep saving frames for the video we want to save
+            elif len(self._queue)>=self._queueLength:
+                while len(self._queue)>=self._queueLength:
+                    self._queue.pop(0)
+                    # we release frames since we are done filming
+            
         self._timer= threading.Timer(self._delay, self.run)
         self._timer.start()
+        #print('{}'.format(datetime.now().strftime("%d/%m/%Y_%H:%M:%S")))
 
 
     def __del__(self):
         self._vid.release()
+        self._timer.cancel()
 
 
     def start(self):
@@ -57,13 +60,18 @@ def VideoInput(object):
             self._start=True
     
     def stop(self):
-        self._start=False
-        self.stopEnregistrement()
+        if self._start==False:
+            print("Pas d'enregistrement en cours")
+        else:
+            self._start=False
+            self.stopEnregistrement()
 
     
 
     def stopEnregistrement(self):
-        result = cv2.VideoWriter('filename_{}.avi'.format(datetime.now().strftime("%d/%m/%Y_%H:%M:%S")),  cv2.VideoWriter_fourcc(*'mp4v'), 10, self._size)
+        filename='{}video_{}.avi'.format(self._basePath,datetime.now().strftime("%d-%m-%Y_%H-%M-%S"))
+        print(filename)
+        result = cv2.VideoWriter(filename,  cv2.VideoWriter_fourcc(*'mp4v'), 10, self._size)
         for frame in self._queue:
             result.write(frame)
         result.release()

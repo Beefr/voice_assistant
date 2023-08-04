@@ -5,7 +5,7 @@ from mainModule.voiceAssistant import *
 def main():
     camera=True
     soundInput=True
-    soundOutput=False
+    soundOutput=False # False for raspberry /!\
     va= VoiceAssistant(camera, soundInput, soundOutput)
     while True:
         va.run()
