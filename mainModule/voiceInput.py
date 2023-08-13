@@ -25,7 +25,7 @@ class VoiceInput(object):
         #try:
         with self._micro as source:
             #listens for the user's input
-            speech = self._client.listen(source, phrase_time_limit = 10)
+            speech = self._client.listen(source, phrase_time_limit = 5)
                 
         # Using google to recognize audio
         self._text=self._client.recognize_google(speech, language="fr-FR")
