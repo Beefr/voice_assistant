@@ -22,7 +22,7 @@ class Musique(object):
     def getLibrary(self): 
         self._library={}
         for directory in os.listdir(self._musiqueFolder): 
-            musique=os.listdir(self._musiqueFolder+"\\"+directory)
+            musique=os.listdir(self._musiqueFolder+"/"+directory)
             files = [os.path.splitext(filename)[0] for filename in musique]
             self._library[directory]=files
         
@@ -30,7 +30,7 @@ class Musique(object):
     def next(self):
         length=len(self._listGroups)
         groupe=self._listGroups[randint(0,length-1)]
-        folderContent=os.listdir(self._musiqueFolder+"\\"+groupe)
+        folderContent=os.listdir(self._musiqueFolder+"/"+groupe)
         val=randint(0,len(folderContent)-1)
         self._historique.append(folderContent[val])
         self._groupeHistorique.append(groupe)
@@ -43,7 +43,7 @@ class Musique(object):
         self._index+=1
         groupe=self._groupeHistorique[self._index]
         song=self._historique[self._index]
-        pygame.mixer.music.load(self._musiqueFolder+"\\"+groupe+"\\"+song)
+        pygame.mixer.music.load(self._musiqueFolder+"/"+groupe+"/"+song)
         self.play()
 
     def play(self):
@@ -67,6 +67,6 @@ class Musique(object):
         self._index-=1
         groupe=self._groupeHistorique[self._index]
         previousMusic=self._historique[self._index]
-        pygame.mixer.music.load(self._musiqueFolder+"\\"+groupe+"\\"+previousMusic)
+        pygame.mixer.music.load(self._musiqueFolder+"/"+groupe+"/"+previousMusic)
         self.play()
 
