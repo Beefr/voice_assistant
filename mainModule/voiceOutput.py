@@ -13,7 +13,7 @@ class VoiceOutput(object):
 
     def translate(self, text):
         speech = gTTS(text, lang='fr')
-        speech.save('./output.mp3')
-        playsound('./output.mp3')
-        remove('./output.mp3')
+        speech.save('/home/coren/voice_assistant/output.mp3')
+        playsound('/home/coren/voice_assistant/output.mp3')
+        remove('/home/coren/voice_assistant/output.mp3')
         return
