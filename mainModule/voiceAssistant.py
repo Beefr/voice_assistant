@@ -100,7 +100,10 @@ class VoiceAssistant(object):
 
 
     def __del__(self):
-        self._timer.cancel()
+        try:
+            self._timer.cancel()
+        except:
+            pass
 
 
     def currentFrame(self):
