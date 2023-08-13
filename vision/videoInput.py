@@ -9,10 +9,10 @@ from datetime import datetime
 class VideoInput(object):
 
     def __init__(self, basePath):
-        self._framerate=20 # images / seconde
+        self._framerate=10 # images / seconde
         self._delay=1/self._framerate # interval between each capture
 
-        self._backup=10 # secondes
+        self._backup=5 # secondes
         self._queueLength=self._backup*self._framerate # number of frames keeped
 
         self._basePath=basePath
