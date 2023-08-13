@@ -20,3 +20,6 @@ opencv-contrib-python
 Flask
 Flask-WTF
 pygobject
+Gst
+gstreamer-player
+pgi
