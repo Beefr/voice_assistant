@@ -3,9 +3,9 @@ from mainModule.voiceAssistant import *
 
 
 def main():
-    camera=True
+    camera=False
     soundInput=True
-    soundOutput=False # False for raspberry /!\
+    soundOutput=True 
     va= VoiceAssistant(camera, soundInput, soundOutput)
     va.run()
 
