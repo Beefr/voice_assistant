@@ -6,7 +6,7 @@ class Musique(object):
 
 
     def __init__(self):
-        self._musiqueFolder=os.getcwd()+"\\musique\\library"
+        self._musiqueFolder=os.getcwd()+"/musique/library"
         self.getLibrary()
         self.listGroups()
         self._historique=[]
