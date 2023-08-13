@@ -10,10 +10,11 @@ import threading
 class VoiceAssistant(object):
 
 
-    def __init__(self, camera, soundInput, soundOutput):
+    def __init__(self, camera, soundInput, soundOutput, chatGPT):
         self._camera=camera
         self._soundInput=soundInput
         self._soundOutput=soundOutput
+        self._gpt=chatGPT
         self._up=True
 
         if self._soundInput:
@@ -25,7 +26,8 @@ class VoiceAssistant(object):
             self._ii=ImageInput()
 
         if soundOutput:
-            self._chatgpt=ChatgptProcessing()
+            if self._gpt:
+                self._chatgpt=ChatgptProcessing()
             self._vo=VoiceOutput()
             self._mu=Musique()
       
@@ -55,9 +57,12 @@ class VoiceAssistant(object):
                 elem=' '.join(self._ii.run())
                 results="Voici le contenu de l'image dont je vais te parler: "+elem+"."
                 print(results+text)
-                self._chatgpt.answer(text+results)
+                if self._gpt:
+                    self._chatgpt.answer(text+results)
+                    self.talk(self._chatgpt.response.content)
+                else:
+                    self.talk(elem)
                 print("\n\n\n"+elem)
-                self.talk(self._chatgpt.response.content)
 
             elif ("vidéo" in text and self._camera):
                 if ("début" in text):
@@ -88,7 +93,7 @@ class VoiceAssistant(object):
                     #self._vo.translate(librairie+text)
                     self.talk("Désolé je n'ai pas compris l'instruction pour le lecteur de musique.")
 
-            elif (self._up and self._soundOutput):
+            elif (self._up and self._soundOutput and self._gpt):
                 self._chatgpt.answer(text)
                 self.talk(self._chatgpt.response.content)
         except Exception as error:

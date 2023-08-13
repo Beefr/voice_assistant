@@ -3,10 +3,11 @@ from mainModule.voiceAssistant import *
 
 
 def main():
-    camera=False
+    camera=True
     soundInput=True
     soundOutput=True 
-    va= VoiceAssistant(camera, soundInput, soundOutput)
+    chatGPT = False
+    va= VoiceAssistant(camera, soundInput, soundOutput, chatGPT)
     va.run()
 
 if __name__ == "__main__":
