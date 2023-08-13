@@ -6,7 +6,7 @@ class VoiceOutput(object):
 
     def __init__(self):
         try:
-            remove('output.mp3')
+            os.remove('output.mp3')
         except:
             pass
 
