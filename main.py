@@ -1,6 +1,6 @@
 from mainModule.voiceAssistant import *
 
-
+import sounddevice
 
 def main():
     camera=False
