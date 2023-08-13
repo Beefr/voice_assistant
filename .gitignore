@@ -8,3 +8,4 @@ connect
 *.wav
 *.avi
 secretKey
+output.mp3
