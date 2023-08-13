@@ -6,7 +6,7 @@ openai
 #opencv-python
 tensorflow
 keras
-imageai==2.1.6
+#imageai==2.1.6
 torch
 torchvision
 pillow
@@ -23,3 +23,4 @@ pygobject
 Gst
 gstreamer-player
 pgi
+tensorflow-object-detection-api
