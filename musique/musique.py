@@ -6,7 +6,8 @@ class Musique(object):
 
 
     def __init__(self):
-        self._musiqueFolder=os.getcwd()+"/voice_assistant/musique/library"
+        #self._musiqueFolder=os.getcwd()+"/musique/library"
+        self._musiqueFolder="/home/coren/voice_assistant/musique/library"
         self.getLibrary()
         self.listGroups()
         self._historique=[]

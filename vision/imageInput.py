@@ -13,7 +13,7 @@ class ImageInput(object):
 
     def __init__(self):
         #self._client = ObjectDetection()          
-        self._base_path = os.path.join(os.getcwd(), "vision/")
+        self._base_path = os.path.join(os.getcwd(), "voice_assistant/vision/")
         #self._client.setModelTypeAsTinyYOLOv3() 
         print(self._base_path+"models/yolo-tiny.h5")
         #self._client.setModelPath(self._base_path+"models/yolo-tiny.h5") 
