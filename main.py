@@ -3,7 +3,7 @@ from mainModule.voiceAssistant import *
 
 
 def main():
-    camera=True
+    camera=False
     soundInput=True
     soundOutput=True 
     chatGPT = False
