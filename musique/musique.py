@@ -12,9 +12,10 @@ class Musique(object):
         self.listGroups()
         self._historique=[]
         self._groupeHistorique=[]
-        self._mixer=pygame.mixer.init()
+        self._mixer=pygame.mixer.pre_init(frequency=48000, buffer=2048)
+        self._mixer.init()
         self._index=-1
-        pygame.mixer.music.set_volume(0.05)
+        pygame.mixer.music.set_volume(0.5)
 
     @property
     def library(self):
