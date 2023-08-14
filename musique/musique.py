@@ -11,6 +11,7 @@ class Musique(object):
         self.getLibrary()
         self.listGroups()
         self._historique=[]
+        self._groupeHistorique=[]
         pygame.mixer.pre_init(frequency=48000, buffer=2048)
         self._mixer=pygame.mixer.init()
         self._index=-1
