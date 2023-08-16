@@ -1,18 +1,13 @@
-from gtts import gTTS
-import os
+import pyttsx3
 
 class VoiceOutput(object):
 
     def __init__(self):
-        try:
-            os.remove('output.mp3')
-        except:
-            pass
+        self._engine= pyttsx3.init()
+        self._engine.setProperty('voice', 'french')
 
 
     def translate(self, text):
-        speech = gTTS(text, lang='fr')
-        speech.save('./output.mp3')
-        os.system('mpg123 -q ./output.mp3')
-        os.remove('./output.mp3')
+        self._engine.say(text)
+        self._engine.runAndWait()
         return
