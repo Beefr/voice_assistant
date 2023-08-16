@@ -25,6 +25,11 @@ class VoiceInput(object):
         self._text=""
         return text
 
+
+    def __del__(self):
+        self._engine.stop
+
+
     def get_noise_level(self):
         return
         #with self._micro as source:

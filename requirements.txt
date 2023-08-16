@@ -1,6 +1,6 @@
 playsound
-gtts
-SpeechRecognition
+#gtts
+#SpeechRecognition
 pyaudio
 openai
 #opencv-python
@@ -24,3 +24,5 @@ Gst
 gstreamer-player
 pgi
 tensorflow-object-detection-api
+pyttsx3
+pocketsphinx
