@@ -15,7 +15,7 @@ class Musique(object):
         pygame.mixer.pre_init(frequency=52000, buffer=2048)
         self._mixer=pygame.mixer.init()
         self._index=-1
-        pygame.mixer.music.set_volume(0.3)
+        pygame.mixer.music.set_volume(0.03)
 
     @property
     def library(self):

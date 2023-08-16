@@ -1,11 +1,22 @@
 import speech_recognition as sr
+from pocketsphinx import LiveSpeech
+
 
 class VoiceInput(object):
 
     def __init__(self):
-        self._client=sr.Recognizer()
-        self._micro=sr.Microphone()
+        self._client = LiveSpeech(
+                #lm='fr_FR/fr-small.lm.bin',
+                #dic='fr_FR/fr.dic',
+                kws_threshold=1e-20,
+                sampling_rate=48000,
+                buffer_size=2048)
+        #self._client=sr.Recognizer()
+        #self._micro=sr.Microphone()
         self._text=""
+        for phrase in self._client:
+            print(phrase)
+            self._text=phrase
 
 
     @property
@@ -15,18 +26,22 @@ class VoiceInput(object):
         return text
 
     def get_noise_level(self):
-        with self._micro as source:
+        return
+        #with self._micro as source:
             # wait for a second to let the recognizer
             # adjust the energy threshold based on
             # the surrounding noise level
-            self._client.adjust_for_ambient_noise(source, duration=1)
+         #   self._client.adjust_for_ambient_noise(source, duration=1)
         
     def translate(self):
-        #try:
-        with self._micro as source:
+        pass
+        #with self._micro as source:
             #listens for the user's input
-            speech = self._client.listen(source, phrase_time_limit = 5)
+            #speech = self._client.listen(source, phrase_time_limit = 5)
                 
         # Using google to recognize audio
-        self._text=self._client.recognize_google(speech, language="fr-FR")
+        #self._text=self._client.recognize_google(speech, language="fr-FR")
+        #for phrase in self._client:
+         #   print(phrase)
+          #  self._text=phrase
     
