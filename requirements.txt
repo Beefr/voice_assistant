@@ -27,3 +27,4 @@ tensorflow-object-detection-api
 pyttsx3
 pocketsphinx
 transformers
+vosk

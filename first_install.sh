@@ -19,6 +19,9 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt install python3 -y
 sudo apt install vim -y
+sudo apt install python3-pyaudio -y
+sudo apt install portaudio19-dev -y
+sudo apt install python3-dev -y
 python3 -m venv env
-source env/bin/activate
-pip3 install -r requirements.txt
+#source env/bin/activate
+#pip3 install -r requirements.txt il faut faire les deux dernieres commandes à la mano

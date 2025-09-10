@@ -19,8 +19,8 @@ class VoiceAssistant(object):
 
         if self._soundInput:
             self._vi=VoiceInput()
-            #self._speechInput=""
-            #self._vi.get_noise_level()
+            self._speechInput=""
+            self._vi.get_noise_level()
 
         if self._camera:
             self._ii=ImageInput()
@@ -32,8 +32,7 @@ class VoiceAssistant(object):
             self._mu=Musique()
       
         
-        #self.talk("Bonjour Monsieur")
-        self.talk("Hello Master, how may I help you?")
+        self.talk("Bonjour Monsieur")
         self._timer= threading.Timer(10, self.run)
 
     def talk(self, msg):
@@ -44,8 +43,8 @@ class VoiceAssistant(object):
         
     def run(self):        
         try:
-            text=self._vi.text()
-        
+            self._vi.translate()
+            text=self._vi.text
             if ("Sarah" in text):
                 self._up=True
             if ("tais-toi" in text):

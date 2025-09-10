@@ -1,23 +1,33 @@
-#import speech_recognition as sr
-#from pocketsphinx import LiveSpeech
+import speech_recognition as sr
+from pocketsphinx import LiveSpeech
 
-from mainModule.useSTT import *
 
 class VoiceInput(object):
 
     def __init__(self):
-        self._client = STT()
-        
+        self._client = LiveSpeech(
+                #lm='fr_FR/fr-small.lm.bin',
+                #dic='fr_FR/fr.dic',
+                kws_threshold=1e-20,
+                sampling_rate=48000,
+                buffer_size=2048)
+        #self._client=sr.Recognizer()
+        #self._micro=sr.Microphone()
+        self._text=""
+        for phrase in self._client:
+            print(phrase)
+            self._text=phrase
 
 
     @property
     def text(self):
-        return self._client.input_text()
-        
+        text=str(self._text)
+        self._text=""
+        return text
 
 
     def __del__(self):
-        self._client.terminate()
+        self._engine.stop
 
 
     def get_noise_level(self):
