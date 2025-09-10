@@ -18,7 +18,7 @@ class VoiceAssistant(object):
         self._up=True
 
         if self._soundInput:
-            from mainModule.voiceInput import *
+            from mainModule.voiceInput import VoiceInput
             self._vi=VoiceInput()
             #self._speechInput=""
             #self._vi.get_noise_level()
@@ -28,14 +28,14 @@ class VoiceAssistant(object):
             self._ii=ImageInput()
 
         if soundOutput:
-            from mainModule.voiceOutput import *
+            from mainModule.voiceOutput import VoiceOutput
             if self._gpt:
                 self._chatgpt=ChatgptProcessing()
             self._vo=VoiceOutput()
             self._mu=Musique()
         
         if chatGPT:
-            from mainModule.chatgptProcessing import *
+            from mainModule.chatgptProcessing import ChatgptProcessing
         
         #self.talk("Bonjour Monsieur")
         self.talk("Hello Master, how may I help you?")
