@@ -1,7 +1,7 @@
 #import speech_recognition as sr
 #from pocketsphinx import LiveSpeech
 
-from    STT.useSTT import *
+from STT.useSTT import *
 
 class VoiceInput(object):
 

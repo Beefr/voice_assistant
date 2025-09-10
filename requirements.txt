@@ -29,3 +29,5 @@ pocketsphinx
 transformers
 vosk
 pyttsx3
+pygame
+sounddevice
