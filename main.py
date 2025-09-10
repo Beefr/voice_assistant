@@ -6,7 +6,7 @@ def main():
     camera=False
     soundInput=True
     soundOutput=True 
-    chatGPT = False
+    chatGPT = True
     va= VoiceAssistant(camera, soundInput, soundOutput, chatGPT)
     va.run()
 
