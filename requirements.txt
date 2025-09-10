@@ -28,3 +28,4 @@ pyttsx3
 pocketsphinx
 transformers
 vosk
+pyttsx3

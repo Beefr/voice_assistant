@@ -1,7 +1,7 @@
-from mainModule.voiceInput import *
-from mainModule.chatgptProcessing import *
-from mainModule.voiceOutput import *
-from vision.imageInput import ImageInput
+#from mainModule.voiceInput import *
+#from mainModule.chatgptProcessing import *
+#from mainModule.voiceOutput import *
+#from vision.imageInput import ImageInput
 from musique.musique import Musique
 
 
@@ -18,19 +18,24 @@ class VoiceAssistant(object):
         self._up=True
 
         if self._soundInput:
+            from mainModule.voiceInput import *
             self._vi=VoiceInput()
             #self._speechInput=""
             #self._vi.get_noise_level()
 
         if self._camera:
+            from vision.imageInput import ImageInput
             self._ii=ImageInput()
 
         if soundOutput:
+            from mainModule.voiceOutput import *
             if self._gpt:
                 self._chatgpt=ChatgptProcessing()
             self._vo=VoiceOutput()
             self._mu=Musique()
-      
+        
+        if chatGPT:
+            from mainModule.chatgptProcessing import *
         
         #self.talk("Bonjour Monsieur")
         self.talk("Hello Master, how may I help you?")
